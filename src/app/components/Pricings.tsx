@@ -1,11 +1,4 @@
-import {
-  Check,
-  ChevronRight,
-  Star,
-  Zap,
-  Award,
-  ArrowRight,
-} from 'lucide-react';
+import { Check, Star, Zap, Award, ArrowRight } from 'lucide-react';
 import { useState } from 'react';
 
 export default function Pricings() {

@@ -28,7 +28,7 @@ function InfiniteMovingGallery() {
   const innerRef = useRef<HTMLDivElement>(null);
   const [scrollX, setScrollX] = useState(0);
   const [itemWidth, setItemWidth] = useState(0);
-  const [cloneCount, setCloneCount] = useState(2); // Number of complete sets we'll render
+  const [cloneCount] = useState(2); // Number of complete sets we'll render
 
   useEffect(() => {
     // Calculate the width of a single item including its gap
@@ -78,7 +78,11 @@ function InfiniteMovingGallery() {
     };
   }, [itemWidth, images.length]);
 
-  const renderImage = (image: { src: string; alt: string; className: string; }, index: number, setKey: string | number) => {
+  const renderImage = (
+    image: { src: string; alt: string; className: string },
+    index: number,
+    setKey: string | number
+  ) => {
     const zigzagPosition = index % 2 === 0 ? 'mt-0' : 'mt-16';
     return (
       <div

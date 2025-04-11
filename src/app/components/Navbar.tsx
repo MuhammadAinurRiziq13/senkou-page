@@ -16,7 +16,7 @@ export default function Navbar() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const menuItems = ['Benefits', 'Services', 'Portfolio','Pricing', 'FAQ'];
+  const menuItems = ['Benefits', 'Services', 'Portfolio', 'Pricing', 'FAQ'];
 
   return (
     <nav

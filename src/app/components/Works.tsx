@@ -1,19 +1,4 @@
-import {
-  Cpu,
-  Infinity,
-  Zap,
-  Rocket,
-  Target,
-  Settings,
-  DollarSign,
-  ThumbsUp,
-  Headphones,
-  ChevronRight,
-  ArrowRight,
-  Eye,
-  Plus,
-  ExternalLink,
-} from 'lucide-react';
+import { ChevronRight, ArrowRight, Eye, ExternalLink } from 'lucide-react';
 import { useState, useEffect } from 'react';
 
 export default function Works() {
@@ -153,7 +138,11 @@ export default function Works() {
           {filteredProjects.map((project, index) => (
             <div
               key={project.id}
-              className="group bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2"
+              className={`group bg-white rounded-2xl overflow-hidden shadow-lg transition-all duration-500 transform ${
+                activeIndex === index
+                  ? 'shadow-2xl -translate-y-2'
+                  : 'hover:shadow-2xl hover:-translate-y-2'
+              }`}
               onMouseEnter={() => setActiveIndex(index)}
               onMouseLeave={() => setActiveIndex(null)}
             >

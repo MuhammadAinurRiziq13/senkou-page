@@ -80,7 +80,7 @@ export default function FAQ() {
           <div className="flex flex-col gap-8 md:gap-10 items-center text-center">
             <div className="inline-flex items-center px-4 py-1 bg-orange-100 text-orange-600 font-semibold rounded-full">
               <span className="mr-2">✨</span>
-              <span>FAQ's</span>
+              <span>FAQ&apos;s</span>
               <span className="ml-2">✨</span>
             </div>
             <div className="w-full md:w-9/12">
