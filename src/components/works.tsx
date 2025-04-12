@@ -1,79 +1,111 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useMemo, useCallback } from 'react';
 import { ChevronRight, ArrowRight, Eye, ExternalLink } from 'lucide-react';
+import { WORKS } from '@senkou/constants/works';
+import type { OurWork } from '@senkou/types/work';
 import Image from 'next/image';
 
+interface ProjectCardProps {
+  project: OurWork;
+  index: number;
+  activeIndex: number | null;
+  setActiveIndex: (index: number | null) => void;
+}
+
+const ProjectCard = ({
+  project,
+  index,
+  activeIndex,
+  setActiveIndex,
+}: ProjectCardProps) => {
+  const handleMouseEnter = useCallback(
+    () => setActiveIndex(index),
+    [index, setActiveIndex]
+  );
+  const handleMouseLeave = useCallback(
+    () => setActiveIndex(null),
+    [setActiveIndex]
+  );
+
+  const openProject = useCallback(
+    () => window.open(`/works/${project.id}`, '_blank'),
+    [project.id]
+  );
+  const viewProject = useCallback(
+    () => window.open(`/works/${project.id}`),
+    [project.id]
+  );
+
+  return (
+    <div
+      className={`group bg-white rounded-2xl overflow-hidden transition-all duration-500 transform border border-gray-100 
+        ${activeIndex === index ? '-translate-y-2' : 'hover:-translate-y-2'}`}
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
+    >
+      <div className="relative overflow-hidden">
+        <Image
+          src={project.image}
+          alt={project.title}
+          width={500}
+          height={300}
+          className="w-full h-64 object-cover transform group-hover:scale-110 transition-transform duration-700 p-2 rounded-2xl"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
+          <div className="transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+            <div className="flex gap-3 mt-4">
+              <button className="w-10 h-10 bg-white/20 backdrop-blur-sm hover:bg-white/30 rounded-full flex items-center justify-center text-white transition-colors">
+                <Eye className="w-5 h-5" />
+              </button>
+              <button
+                className="w-10 h-10 bg-white/20 backdrop-blur-sm hover:bg-white/30 rounded-full flex items-center justify-center text-white transition-colors cursor-pointer"
+                onClick={openProject}
+              >
+                <ExternalLink className="w-5 h-5" />
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div className="flex flex-col justify-between p-6 min-h-[180px]">
+        <div>
+          <h3 className="text-xl font-bold mb-3 group-hover:text-orange-500 transition-colors">
+            {project.title}
+          </h3>
+          <p className="text-gray-600 text-sm">{project.description}</p>
+        </div>
+        <div className="mt-auto pt-6 flex justify-between items-center">
+          <div className="flex flex-wrap gap-2">
+            <span className="text-xs font-medium bg-orange-500 px-3 py-1 rounded-full text-white">
+              {project.category}
+            </span>
+            <span className="text-xs text-gray-500 bg-gray-100 px-3 py-1 rounded-full">
+              {project.year}
+            </span>
+          </div>
+          <button
+            className="text-orange-500 flex items-center text-sm font-medium group-hover:text-orange-600 transition-colors cursor-pointer"
+            onClick={viewProject}
+          >
+            Lihat
+            <ArrowRight className="ml-1 w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+};
+
 export default function Works() {
-  const projects = [
-    {
-      id: 'quiz-app',
-      title: 'Quiz App',
-      description: 'Sebuah aplikasi untuk mengerjakan sebuah quiz',
-      image: '/services.png',
-      category: 'Web App',
-      year: '2023',
-    },
-    {
-      id: 'e-commerce-platform',
-      title: 'E-Commerce Platform',
-      description: 'Platform belanja online dengan UX terbaik',
-      image: '/services.png',
-      category: 'Web App',
-      year: '2024',
-    },
-    {
-      id: 'company-profile',
-      title: 'Company Profile',
-      description: 'Website resmi untuk perusahaan teknologi',
-      image: '/services.png',
-      category: 'Web Page',
-      year: '2023',
-    },
-    {
-      id: 'portfolio-website',
-      title: 'Portfolio Website',
-      description: 'Website portofolio untuk desainer grafis',
-      image: '/services.png',
-      category: 'Web Page',
-      year: '2024',
-    },
-    {
-      id: 'learning-management-system',
-      title: 'Learning Management System',
-      description: 'Aplikasi untuk mengelola pembelajaran online',
-      image: '/services.png',
-      category: 'Web App',
-      year: '2024',
-    },
-    {
-      id: 'restaurant-booking',
-      title: 'Restaurant Booking',
-      description: 'Sistem pemesanan untuk restoran premium',
-      image: '/services.png',
-      category: 'Web App',
-      year: '2023',
-    },
-  ];
-
   const [filter, setFilter] = useState('All');
-  const categories = ['All', 'Web Page', 'Web App'];
-  const [filteredProjects, setFilteredProjects] = useState(projects);
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
-  const [isVisible, setIsVisible] = useState(false);
+  const categories = ['All', 'Web Page', 'Web App'];
 
-  useEffect(() => {
-    // Filter projects based on selected category
-    if (filter === 'All') {
-      setFilteredProjects(projects);
-    } else {
-      setFilteredProjects(
-        projects.filter(project => project.category === filter)
-      );
-    }
-
-    // Animation on load
-    setIsVisible(true);
+  const filteredProjects = useMemo(() => {
+    return filter === 'All'
+      ? WORKS
+      : WORKS.filter(project => project.category === filter);
   }, [filter]);
 
   return (
@@ -130,78 +162,15 @@ export default function Works() {
         </div>
 
         {/* Projects Grid with animations */}
-        <div
-          className={`grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-10 transition-opacity duration-500 ${isVisible ? 'opacity-100' : 'opacity-0'}`}
-        >
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-10 transition-all duration-500">
           {filteredProjects.map((project, index) => (
-            <div
+            <ProjectCard
               key={project.id}
-              className={`group bg-white rounded-2xl overflow-hidden  transition-all duration-500 transform border border-gray-100 
-                ${
-                  activeIndex === index
-                    ? '-translate-y-2'
-                    : 'hover:-translate-y-2'
-                }
-                  `}
-              onMouseEnter={() => setActiveIndex(index)}
-              onMouseLeave={() => setActiveIndex(null)}
-            >
-              <div className="relative overflow-hidden">
-                <Image
-                  src={project.image}
-                  alt={project.title}
-                  width={500}
-                  height={300}
-                  className="w-full h-64 object-cover transform group-hover:scale-110 transition-transform duration-700 p-2 rounded-2xl"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
-                  <div className="transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
-                    <div className="flex gap-3 mt-4">
-                      <button className="w-10 h-10 bg-white/20 backdrop-blur-sm hover:bg-white/30 rounded-full flex items-center justify-center text-white transition-colors">
-                        <Eye className="w-5 h-5" />
-                      </button>
-                      <button
-                        className="w-10 h-10 bg-white/20 backdrop-blur-sm hover:bg-white/30 rounded-full flex items-center justify-center text-white transition-colors cursor-pointer"
-                        onClick={() =>
-                          window.open(`/works/${project.id}`, '_blank')
-                        }
-                      >
-                        <ExternalLink className="w-5 h-5" />
-                      </button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div className="flex flex-col justify-between p-6 min-h-[180px]">
-                <div>
-                  <h3 className="text-xl font-bold mb-3 group-hover:text-orange-500 transition-colors">
-                    {project.title}
-                  </h3>
-                  <p className="text-gray-600 text-sm">{project.description}</p>
-                </div>
-                <div className="mt-auto pt-6 flex justify-between items-center">
-                  {/* Tagging */}
-                  <div className="flex flex-wrap gap-2">
-                    <span className="text-xs font-medium bg-orange-500 px-3 py-1 rounded-full text-white">
-                      {project.category}
-                    </span>
-                    <span className="text-xs text-gray-500 bg-gray-100 px-3 py-1 rounded-full">
-                      {project.year}
-                    </span>
-                  </div>
-
-                  <button
-                    className="text-orange-500 flex items-center text-sm font-medium group-hover:text-orange-600 transition-colors cursor-pointer"
-                    onClick={() => {
-                      window.open(`/works/${project.id}`);
-                    }}
-                  >
-                    Lihat
-                    <ArrowRight className="ml-1 w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
-                  </button>
-                </div>
-              </div>
-            </div>
+              project={project}
+              index={index}
+              activeIndex={activeIndex}
+              setActiveIndex={setActiveIndex}
+            />
           ))}
         </div>
 
