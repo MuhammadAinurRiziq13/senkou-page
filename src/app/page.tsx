@@ -1,12 +1,12 @@
-import Navbar from '@senkou/components/navbar';
-import Hero from '@senkou/components/hero';
+import Navbar from '@senkou/components/navbar/navbar';
 import InfiniteMovingGallery from '@senkou/components/infinite-moving-gallery';
-import Benefits from '@senkou/components/benefits';
-import Services from '@senkou/components/services';
-import Works from '@senkou/components/works';
-import Pricings from '@senkou/components/pricings';
-import FAQ from '@senkou/components/faq';
-import Footer from '@senkou/components/footer';
+import Hero from '@senkou/sections/hero';
+import Benefits from '@senkou/sections/benefits';
+import Services from '@senkou/sections/services';
+import Works from '@senkou/sections/works';
+import Pricings from '@senkou/sections/pricings';
+import FAQ from '@senkou/sections/faqs';
+import Footer from '@senkou/sections/footer';
 
 export default function Home() {
   return (

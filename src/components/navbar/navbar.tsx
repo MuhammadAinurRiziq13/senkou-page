@@ -7,6 +7,9 @@ import { Menu, X, ChevronRight, ArrowRight } from 'lucide-react';
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [showMenu, setShowMenu] = useState(false); // ⬅️ Kontrol mounting
+
+  const menuItems = ['Benefits', 'Services', 'Portfolio', 'Pricing', 'FAQ'];
 
   useEffect(() => {
     const handleScroll = () => {
@@ -16,7 +19,16 @@ export default function Navbar() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const menuItems = ['Benefits', 'Services', 'Portfolio', 'Pricing', 'FAQ'];
+  useEffect(() => {
+    if (mobileMenuOpen) {
+      setShowMenu(true);
+      document.body.style.overflow = 'hidden';
+    } else {
+      const timeout = setTimeout(() => setShowMenu(false), 300);
+      document.body.style.overflow = '';
+      return () => clearTimeout(timeout);
+    }
+  }, [mobileMenuOpen]);
 
   const handleMenuItemClick = (item: string) => {
     setMobileMenuOpen(false);
@@ -47,13 +59,13 @@ export default function Navbar() {
           {menuItems.map(item => (
             <li
               key={item}
-              className="relative group"
+              className="relative group cursor-pointer"
               onClick={() => handleMenuItemClick(item)}
             >
-              <span className="hover:text-orange-500 transition-colors cursor-pointer">
+              <span className="hover:text-orange-500 transition-colors">
                 {item}
               </span>
-              <span className="absolute -bottom-1 left-1/2 w-0 h-0.5 bg-gradient-to-r from-orange-500 to-red-500 group-hover:w-full group-hover:left-0 transition-all duration-300"></span>
+              <span className="absolute -bottom-1 left-1/2 w-0 h-0.5 bg-gradient-to-r from-orange-500 to-red-500 group-hover:w-full group-hover:left-0 transition-all duration-300" />
             </li>
           ))}
         </ul>
@@ -67,7 +79,7 @@ export default function Navbar() {
                 'https://wa.me/6281325205723?text=Halo%20Senkou%20Studio,%20saya%20ingin%20konsultasi%20tentang%20website.';
             }}
           >
-            <span className="absolute top-0 left-0 w-full h-full bg-white/20 transform -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-700"></span>
+            <span className="absolute top-0 left-0 w-full h-full bg-white/20 transform -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-700" />
             <span className="relative flex items-center gap-2">
               Order Now
               <ChevronRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
@@ -81,18 +93,35 @@ export default function Navbar() {
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
           aria-label="Toggle menu"
         >
-          {mobileMenuOpen ? (
-            <X className="w-6 h-6" />
-          ) : (
-            <Menu className="w-6 h-6" />
-          )}
+          <Menu className="w-6 h-6" />
         </button>
       </div>
 
       {/* Mobile Menu */}
-      {mobileMenuOpen && (
-        <div className="md:hidden fixed inset-0 bg-white/95 backdrop-blur-md z-40 flex items-center justify-center">
-          <ul className="flex flex-col text-gray-800 font-medium text-center gap-6">
+      {showMenu && (
+        <div
+          className={`w-screen h-screen md:hidden fixed z-[999] top-0 left-0 bg-white/95 backdrop-blur-md flex items-center justify-center transition-all duration-300 ease-in-out transform ${
+            mobileMenuOpen
+              ? 'opacity-100 pointer-events-auto translate-y-0'
+              : 'opacity-0 pointer-events-none translate-y-[-10px]'
+          }`}
+        >
+          {/* Close Button */}
+          <div
+            className="absolute top-4 right-4 cursor-pointer"
+            onClick={() => setMobileMenuOpen(false)}
+          >
+            <X className="w-8 h-8 text-gray-700" />
+          </div>
+
+          {/* Menu Items */}
+          <ul
+            className={`flex flex-col text-gray-800 font-medium text-center gap-6 transition-all duration-300 transform ${
+              mobileMenuOpen
+                ? 'opacity-100 translate-y-0'
+                : 'opacity-0 translate-y-2'
+            }`}
+          >
             {menuItems.map(item => (
               <li
                 key={item}
@@ -102,10 +131,12 @@ export default function Navbar() {
                 {item}
               </li>
             ))}
+
             <li className="px-4 py-3 mt-4">
               <button
                 className="w-full bg-gradient-to-r from-orange-500 to-red-500 text-white px-8 py-3 rounded-full font-medium shadow-md flex items-center justify-center gap-2"
                 onClick={() => {
+                  setMobileMenuOpen(false);
                   window.location.href =
                     'https://wa.me/6281325205723?text=Halo%20Senkou%20Studio,%20saya%20ingin%20konsultasi%20tentang%20website.';
                 }}
