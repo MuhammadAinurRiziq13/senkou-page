@@ -18,9 +18,17 @@ export default function Navbar() {
 
   const menuItems = ['Benefits', 'Services', 'Portfolio', 'Pricing', 'FAQ'];
 
+  const handleMenuItemClick = (item: string) => {
+    setMobileMenuOpen(false);
+    const target = document.getElementById(item.toLowerCase());
+    if (target) {
+      target.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
     <nav
-      className={`fixed top-0 w-full z-50 transition-all duration-300 ${
+      className={`fixed top-0 w-full z-50 max-w-screen transition-all duration-300 ${
         isScrolled ? 'bg-white/90 backdrop-blur-lg shadow-lg' : 'bg-transparent'
       }`}
     >
@@ -29,17 +37,19 @@ export default function Navbar() {
         <div className="flex items-center gap-3">
           <Image src="/logo.svg" width={40} height={40} alt="logo" />
           <h1 className="text-xl font-bold text-gray-900">
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-500 via-red-500 to-pink-500">
-              Senkou
-            </span>{' '}
-            <span className="font-extrabold">Studio</span>
+            <span className="bg-clip-text text-orange-600">Senkou</span>{' '}
+            <span>Studio</span>
           </h1>
         </div>
 
         {/* Desktop Menu */}
         <ul className="hidden md:flex gap-8 text-gray-700 font-medium">
           {menuItems.map(item => (
-            <li key={item} className="relative group">
+            <li
+              key={item}
+              className="relative group"
+              onClick={() => handleMenuItemClick(item)}
+            >
               <span className="hover:text-orange-500 transition-colors cursor-pointer">
                 {item}
               </span>
@@ -50,7 +60,13 @@ export default function Navbar() {
 
         {/* CTA Button */}
         <div className="hidden md:block">
-          <button className="relative overflow-hidden bg-gradient-to-r from-orange-500 to-red-500 text-white px-6 py-2 rounded-full font-medium shadow-lg hover:shadow-xl transition-all duration-300 group">
+          <button
+            className="relative overflow-hidden bg-gradient-to-r from-orange-500 to-red-500 text-white px-6 py-2 rounded-full font-medium shadow-lg hover:shadow-xl transition-all duration-300 group cursor-pointer"
+            onClick={() => {
+              window.location.href =
+                'https://wa.me/6281325205723?text=Halo%20Senkou%20Studio,%20saya%20ingin%20konsultasi%20tentang%20website.';
+            }}
+          >
             <span className="absolute top-0 left-0 w-full h-full bg-white/20 transform -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-700"></span>
             <span className="relative flex items-center gap-2">
               Order Now
@@ -80,13 +96,20 @@ export default function Navbar() {
             {menuItems.map(item => (
               <li
                 key={item}
-                className="px-4 py-2 hover:text-orange-500 transition-colors cursor-pointer text-xl"
+                className="px-4 py-2 hover:text-orange-500 transition-colors cursor-pointer text-xl font-semibold"
+                onClick={() => handleMenuItemClick(item)}
               >
                 {item}
               </li>
             ))}
             <li className="px-4 py-3 mt-4">
-              <button className="w-full bg-gradient-to-r from-orange-500 to-red-500 text-white px-8 py-3 rounded-full font-medium shadow-md flex items-center justify-center gap-2">
+              <button
+                className="w-full bg-gradient-to-r from-orange-500 to-red-500 text-white px-8 py-3 rounded-full font-medium shadow-md flex items-center justify-center gap-2"
+                onClick={() => {
+                  window.location.href =
+                    'https://wa.me/6281325205723?text=Halo%20Senkou%20Studio,%20saya%20ingin%20konsultasi%20tentang%20website.';
+                }}
+              >
                 Order Now
                 <ArrowRight className="w-4 h-4" />
               </button>

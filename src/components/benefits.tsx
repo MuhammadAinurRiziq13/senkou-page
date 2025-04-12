@@ -1,3 +1,5 @@
+'use client';
+
 import {
   Cpu,
   Infinity,
@@ -11,7 +13,7 @@ import {
   ChevronRight,
 } from 'lucide-react';
 
-function Benefits() {
+export default function Benefits() {
   const benefitItems = [
     {
       icon: Infinity,
@@ -70,28 +72,24 @@ function Benefits() {
   ];
 
   return (
-    <section className="w-full py-32 overflow-hidden relative bg-gradient-to-b from-white to-orange-50">
-      {/* Modern background elements */}
-      <div className="absolute top-0 left-0 w-full h-full overflow-hidden">
-        <div className="absolute top-0 right-0 w-1/3 h-1/3 bg-orange-200 rounded-full filter blur-3xl opacity-10 transform translate-x-1/3 -translate-y-1/3"></div>
-        <div className="absolute bottom-0 left-0 w-1/2 h-1/2 bg-orange-300 rounded-full filter blur-3xl opacity-10 transform -translate-x-1/4 translate-y-1/4"></div>
-        <div className="absolute top-1/2 left-1/2 w-1/3 h-1/3 bg-orange-100 rounded-full filter blur-3xl opacity-20 transform -translate-x-1/2 -translate-y-1/2"></div>
-      </div>
-
+    <section
+      className="w-full py-32 overflow-hidden relative bg-gradient-to-b from-white to-orange-50"
+      id="benefits"
+    >
       {/* Main content container */}
       <div className="max-w-6xl mx-auto px-6 relative z-10">
         {/* Header with enhanced typography */}
         <div className="mb-24">
-          <div className="inline-block text-orange-600 font-semibold py-2 mb-6">
-            BENEFITS
-          </div>
+          <span className="inline-block py-1 px-3 bg-orange-100 text-orange-600 font-semibold rounded-full text-sm mb-6">
+            Benefits
+          </span>
 
           <div className="flex flex-col md:flex-row gap-12 items-start">
             <div className="md:w-1/2">
               <h2 className="text-5xl md:text-6xl font-bold leading-tight mb-6">
                 Mengapa pilih
-                <span className="relative inline-block ml-2 mr-2">
-                  <span className="absolute inset-x-0 bottom-2 h-3 bg-orange-200 -z-10 transform -rotate-1"></span>
+                <span className="relative inline-block">
+                  {/* <span className="absolute inset-x-0 bottom-2 h-3 bg-orange-200 -z-10 transform -rotate-1"></span> */}
                   Jasa Pembuatan Website
                 </span>
                 di
@@ -110,7 +108,12 @@ function Benefits() {
                 bisnis Anda dan mewujudkannya dalam bentuk website yang
                 sempurna.
               </p>
-              <div className="mt-6 inline-flex items-center group cursor-pointer">
+              <div
+                className="mt-6 inline-flex items-center group cursor-pointer"
+                onClick={() => {
+                  window.open('https://wa.me/+6281325205723', '_blank');
+                }}
+              >
                 <span className="text-orange-600 font-medium mr-2">
                   Konsultasi gratis
                 </span>
@@ -128,15 +131,16 @@ function Benefits() {
           {benefitItems.map((benefit, index) => (
             <div
               key={index}
-              className="benefit-item group p-8 rounded-2xl transition-all duration-300 bg-white hover:bg-gradient-to-br hover:from-white hover:to-orange-50 shadow-sm hover:shadow-xl border border-gray-100"
+              className="benefit-item group p-8 rounded-2xl transition-all duration-300 bg-white border-[1px] border-gray-100 hover:transform hover:scale-[1.03]"
             >
-              <div className="text-orange-500 mb-6 p-4 bg-orange-50 inline-flex items-center justify-center rounded-xl group-hover:bg-white group-hover:shadow-md transition-all duration-300">
-                <benefit.icon size={32} strokeWidth={1.5} />
+              <div className="text-orange-500 mb-6 p-4 bg-orange-50 inline-flex items-center justify-center rounded-xl transition-all duration-500 group-hover:scale-[1.1]">
+                <benefit.icon
+                  size={32}
+                  strokeWidth={1.5}
+                  className="group-hover:scale-[1.2] transition-all duration-700"
+                />
               </div>
               <h3 className="font-bold text-xl mb-4 flex items-center">
-                <span className="text-orange-500 mr-2 font-medium">
-                  {index + 1}.
-                </span>
                 <span>{benefit.title}</span>
               </h3>
               <p className="text-gray-600 leading-relaxed">
@@ -147,7 +151,7 @@ function Benefits() {
         </div>
 
         {/* Optional animated dots pattern */}
-        <div className="absolute top-1/2 right-0 transform -translate-y-1/2 hidden lg:block">
+        <div className="absolute top-1/2 right-0 transform -translate-y-1/2 hidden lg:block z-[-1]">
           <div className="grid grid-cols-3 gap-2">
             {[...Array(15)].map((_, i) => (
               <div key={i} className="w-2 h-2 rounded-full bg-orange-200"></div>
@@ -158,5 +162,3 @@ function Benefits() {
     </section>
   );
 }
-
-export default Benefits;

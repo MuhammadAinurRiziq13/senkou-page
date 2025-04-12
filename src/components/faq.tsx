@@ -1,3 +1,5 @@
+'use client';
+
 import { useState } from 'react';
 import { ChevronDown, MessageCircle, Phone } from 'lucide-react';
 
@@ -54,15 +56,10 @@ export default function FAQ() {
   ];
 
   return (
-    <section className="w-full py-24 md:py-36 overflow-hidden relative bg-gradient-to-b from-white via-orange-50 to-white">
-      {/* Enhanced animated gradient background */}
-      <div className="absolute top-0 left-0 w-full h-full overflow-hidden">
-        <div className="absolute top-0 right-0 w-1/3 h-1/3 bg-orange-200 rounded-full filter blur-3xl opacity-20 transform translate-x-1/3 -translate-y-1/3 animate-pulse"></div>
-        <div className="absolute bottom-0 left-0 w-1/2 h-1/2 bg-orange-300 rounded-full filter blur-3xl opacity-20 transform -translate-x-1/4 translate-y-1/4 animate-pulse"></div>
-        <div className="absolute top-1/2 left-1/2 w-1/3 h-1/3 bg-blue-100 rounded-full filter blur-3xl opacity-10 transform -translate-x-1/2 -translate-y-1/2 animate-pulse"></div>
-        <div className="absolute bottom-1/4 right-1/4 w-1/4 h-1/4 bg-orange-100 rounded-full filter blur-3xl opacity-15 transform translate-x-1/4 translate-y-1/4 animate-pulse"></div>
-      </div>
-
+    <section
+      className="w-full py-12 md:py-24 overflow-hidden relative bg-white"
+      id="faq"
+    >
       {/* Enhanced decorative elements */}
       <div className="absolute top-20 left-8 w-16 h-16 border-2 border-orange-200 rounded-lg rotate-12 opacity-30 animate-bounce"></div>
       <div className="absolute bottom-20 right-8 w-24 h-24 border-2 border-orange-300 rounded-full opacity-20 animate-pulse"></div>
@@ -79,9 +76,9 @@ export default function FAQ() {
         <div className="mb-16">
           <div className="flex flex-col gap-8 md:gap-10 items-center text-center">
             <div className="inline-flex items-center px-4 py-1 bg-orange-100 text-orange-600 font-semibold rounded-full">
-              <span className="mr-2">✨</span>
+              {/* <span className="mr-2">✨</span> */}
               <span>FAQ&apos;s</span>
-              <span className="ml-2">✨</span>
+              {/* <span className="ml-2">✨</span> */}
             </div>
             <div className="w-full md:w-9/12">
               <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold leading-tight mb-6 bg-gradient-to-r from-orange-600 via-orange-500 to-orange-400 bg-clip-text text-transparent">

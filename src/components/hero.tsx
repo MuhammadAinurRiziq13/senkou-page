@@ -1,3 +1,5 @@
+'use client';
+
 import { ArrowRight, Code, Sparkles } from 'lucide-react';
 
 export default function Hero() {
@@ -17,7 +19,7 @@ export default function Hero() {
 
       {/* Main content */}
       <div className="relative">
-        <span className="inline-block py-1 px-3 bg-orange-100 text-orange-600 rounded-full text-sm font-medium mb-6">
+        <span className="inline-block py-1 px-3 bg-orange-100 text-orange-600 font-semibold rounded-full text-sm mb-6">
           Website Development Agency
         </span>
         <h2 className="text-4xl md:text-6xl font-bold leading-tight bg-clip-text text-transparent bg-gradient-to-b from-gray-900 to-gray-700">
@@ -33,14 +35,26 @@ export default function Hero() {
           setiap langkah.
         </p>
         <div className="mt-10 flex flex-col sm:flex-row gap-4 justify-center">
-          <button className="relative overflow-hidden bg-gradient-to-r from-orange-500 to-red-500 text-white px-8 py-4 rounded-lg text-base font-medium shadow-xl hover:shadow-2xl transform transition-all duration-300 hover:-translate-y-1 group">
+          <button
+            className="relative overflow-hidden bg-gradient-to-r from-orange-500 to-red-500 text-white px-8 py-4 text-base font-medium rounded-full transform transition-all duration-300 hover:-translate-y-1 group cursor-pointer
+          "
+            onClick={() => {
+              window.location.href =
+                'https://wa.me/6281325205723?text=Halo%20Senkou%20Studio,%20saya%20ingin%20konsultasi%20tentang%20website.';
+            }}
+          >
             <span className="absolute top-0 left-0 w-full h-full bg-white/20 transform -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-700"></span>
             <span className="relative flex items-center justify-center gap-2">
               Pesan Sekarang
               <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
             </span>
           </button>
-          <button className="bg-white text-gray-800 border border-gray-200 hover:border-orange-300 px-8 py-4 rounded-lg text-base font-medium shadow-md hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
+          <button
+            className="bg-white text-gray-800 font-semibold border border-gray-200 hover:border-orange-300 px-8 py-4 rounded-full text-base transition-all duration-300 hover:-translate-y-1 cursor-pointer"
+            onClick={() => {
+              window.location.href = '/works';
+            }}
+          >
             Lihat Portfolio
           </button>
         </div>

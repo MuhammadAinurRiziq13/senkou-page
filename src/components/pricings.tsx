@@ -1,5 +1,7 @@
-import { Check, Star, Zap, Award, ArrowRight } from 'lucide-react';
+'use client';
+
 import { useState } from 'react';
+import { Check, Star, Zap, Award, ArrowRight } from 'lucide-react';
 
 export default function Pricings() {
   const [hoveredPlan, setHoveredPlan] = useState<string | null>(null);
@@ -7,51 +9,9 @@ export default function Pricings() {
   // Updated for yearly landing page services
   const pricingPlans = [
     {
-      id: 'standard',
-      name: 'Standard',
-      tag: 'Most Popular',
-      description:
-        'High-quality landing page with essential features for small businesses',
-      price: 'Rp5.999K',
-      period: '/tahun',
-      priceNote: 'Berlaku selama 12 bulan',
-      color: 'from-orange-400 to-orange-500',
-      icon: Star,
-      features: [
-        'Landing page responsive',
-        '3 halaman termasuk homepage',
-        '1x revisi desain',
-        'Form kontak & integrasi email',
-        'SEO dasar',
-        'Hosting gratis 1 tahun',
-        'Support teknis 3 bulan',
-      ],
-    },
-    {
-      id: 'growth',
-      name: 'Growth',
-      tag: 'Best value',
-      description:
-        'Solusi lengkap untuk bisnis yang sedang berkembang dengan fitur premium',
-      price: 'Rp12.499K',
-      period: '/tahun',
-      priceNote: 'Berlaku selama 12 bulan',
-      color: 'from-orange-500 to-orange-600',
-      icon: Zap,
-      features: [
-        'Landing page responsive premium',
-        '5 halaman kustom',
-        '3x revisi desain',
-        'Form kontak & CRM integration',
-        'SEO optimization lengkap',
-        'Hosting premium 1 tahun',
-        'Support teknis 6 bulan',
-      ],
-    },
-    {
       id: 'basic',
-      name: 'Basic',
-      tag: 'Starter',
+      name: 'Dasar',
+      tag: 'Pemula',
       description: 'Solusi terjangkau untuk kebutuhan landing page sederhana',
       price: 'Rp2.999K',
       period: '/tahun',
@@ -65,21 +25,58 @@ export default function Pricings() {
         'Form kontak dasar',
         'SEO dasar',
         'Hosting shared 1 tahun',
-        'Support teknis 1 bulan',
+        'Dukungan teknis 1 bulan',
+      ],
+    },
+    {
+      id: 'standard',
+      name: 'Standar',
+      tag: 'Paling Populer',
+      description:
+        'Landing page berkualitas tinggi dengan fitur esensial untuk bisnis kecil',
+      price: 'Rp5.999K',
+      period: '/tahun',
+      priceNote: 'Berlaku selama 12 bulan',
+      color: 'from-orange-400 to-orange-500',
+      icon: Star,
+      features: [
+        'Landing page responsive',
+        '3 halaman termasuk homepage',
+        '1x revisi desain',
+        'Form kontak & integrasi email',
+        'SEO dasar',
+        'Hosting gratis 1 tahun',
+        'Dukungan teknis 3 bulan',
+      ],
+    },
+    {
+      id: 'growth',
+      name: 'Pengembangan',
+      tag: 'Nilai Terbaik',
+      description:
+        'Solusi lengkap untuk bisnis yang sedang berkembang dengan fitur premium',
+      price: 'Rp12.499K',
+      period: '/tahun',
+      priceNote: 'Berlaku selama 12 bulan',
+      color: 'from-orange-500 to-orange-600',
+      icon: Zap,
+      features: [
+        'Landing page responsive premium',
+        '5 halaman kustom',
+        '3x revisi desain',
+        'Form kontak & integrasi CRM',
+        'Optimasi SEO lengkap',
+        'Hosting premium 1 tahun',
+        'Dukungan teknis 6 bulan',
       ],
     },
   ];
 
   return (
-    <section className="w-full py-24 md:py-36 overflow-hidden relative bg-gradient-to-b from-slate-50 via-orange-50 to-white">
-      {/* Modern gradient background with animated elements */}
-      <div className="absolute top-0 left-0 w-full h-full overflow-hidden">
-        <div className="absolute top-0 right-0 w-1/3 h-1/3 bg-orange-200 rounded-full filter blur-3xl opacity-20 transform translate-x-1/3 -translate-y-1/3 animate-pulse"></div>
-        <div className="absolute bottom-0 left-0 w-1/2 h-1/2 bg-orange-300 rounded-full filter blur-3xl opacity-20 transform -translate-x-1/4 translate-y-1/4 animate-pulse"></div>
-        <div className="absolute top-1/2 left-1/2 w-1/3 h-1/3 bg-blue-100 rounded-full filter blur-3xl opacity-10 transform -translate-x-1/2 -translate-y-1/2 animate-pulse"></div>
-        <div className="absolute bottom-1/4 right-1/4 w-1/4 h-1/4 bg-orange-100 rounded-full filter blur-3xl opacity-15 transform translate-x-1/4 translate-y-1/4 animate-pulse"></div>
-      </div>
-
+    <section
+      className="w-full py-12 md:py-24 overflow-hidden relative bg-white"
+      id="pricing"
+    >
       {/* Decorative elements */}
       <div className="absolute top-20 left-8 w-16 h-16 border-2 border-orange-200 rounded-lg rotate-12 opacity-30"></div>
       <div className="absolute bottom-20 right-8 w-24 h-24 border-2 border-orange-300 rounded-full opacity-20"></div>
@@ -91,8 +88,8 @@ export default function Pricings() {
         <div className="mb-20">
           <div className="flex flex-col gap-8 md:gap-10 items-center text-center">
             <div className="inline-flex items-center px-4 py-2 bg-gradient-to-r from-orange-100 to-orange-200 text-orange-600 font-semibold rounded-full">
-              <Star className="w-4 h-4 mr-2" />
-              PAKET LANDING PAGE PREMIUM
+              {/* <Star className="w-4 h-4 mr-2" /> */}
+              Paket Landing Premium
             </div>
             <div className="w-full md:w-9/12">
               <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold leading-tight mb-6">
@@ -113,10 +110,8 @@ export default function Pricings() {
           {pricingPlans.map(plan => (
             <div
               key={plan.id}
-              className={`relative rounded-3xl overflow-hidden shadow-xl transition-all duration-500 ${
-                hoveredPlan === plan.id
-                  ? 'scale-105 shadow-2xl shadow-orange-200'
-                  : 'shadow-lg shadow-orange-100/30'
+              className={`relative rounded-3xl overflow-hidden transition-all duration-500 ${
+                hoveredPlan === plan.id && 'scale-105 '
               } bg-white border border-gray-100`}
               onMouseEnter={() => setHoveredPlan(plan.id)}
               onMouseLeave={() => setHoveredPlan(null)}
