@@ -11,5 +11,10 @@ export interface OurWork {
   description: string;
   image: string;
   category: WorkCategory;
-  year: number;
+  country: {
+    name: string;
+    code: string;
+  };
+  createdAt: Date | number;
+  blog?: React.ReactNode | string;
 }

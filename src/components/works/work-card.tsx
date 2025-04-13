@@ -9,22 +9,24 @@ import Image from 'next/image';
 interface WorkCardProps {
   project: OurWork;
   index: number;
-  activeIndex: number | null;
-  setActiveIndex: (index: number | null) => void;
+  className?: string;
+  activeIndex?: number | null;
+  setActiveIndex?: (index: number | null) => void;
 }
 
 export default function WorkCard({
   project,
   index,
+  className,
   activeIndex,
   setActiveIndex,
 }: WorkCardProps) {
   const handleMouseEnter = useCallback(
-    () => setActiveIndex(index),
+    () => typeof setActiveIndex === 'function' && setActiveIndex(index),
     [index, setActiveIndex]
   );
   const handleMouseLeave = useCallback(
-    () => setActiveIndex(null),
+    () => typeof setActiveIndex === 'function' && setActiveIndex(null),
     [setActiveIndex]
   );
 
@@ -40,7 +42,7 @@ export default function WorkCard({
   return (
     <div
       className={`group bg-white rounded-2xl overflow-hidden transition-all duration-500 transform border border-gray-100 
-        ${activeIndex === index ? '-translate-y-2' : 'hover:-translate-y-2'}`}
+        ${activeIndex === index ? '-translate-y-2' : 'hover:-translate-y-2'} ${className}`}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
     >
@@ -52,21 +54,23 @@ export default function WorkCard({
           height={300}
           className="w-full h-64 object-cover transform group-hover:scale-110 transition-transform duration-700 p-2 rounded-2xl"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
-          <div className="transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
-            <div className="flex gap-3 mt-4">
-              <button className="w-10 h-10 bg-white/20 backdrop-blur-sm hover:bg-white/30 rounded-full flex items-center justify-center text-white transition-colors">
-                <Eye className="w-5 h-5" />
-              </button>
-              <button
-                className="w-10 h-10 bg-white/20 backdrop-blur-sm hover:bg-white/30 rounded-full flex items-center justify-center text-white transition-colors cursor-pointer"
-                onClick={openProject}
-              >
-                <ExternalLink className="w-5 h-5" />
-              </button>
+        {project.blog && (
+          <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
+            <div className="transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+              <div className="flex gap-3 mt-4">
+                <button className="w-10 h-10 bg-white/20 backdrop-blur-sm hover:bg-white/30 rounded-full flex items-center justify-center text-white transition-colors">
+                  <Eye className="w-5 h-5" />
+                </button>
+                <button
+                  className="w-10 h-10 bg-white/20 backdrop-blur-sm hover:bg-white/30 rounded-full flex items-center justify-center text-white transition-colors cursor-pointer"
+                  onClick={openProject}
+                >
+                  <ExternalLink className="w-5 h-5" />
+                </button>
+              </div>
             </div>
           </div>
-        </div>
+        )}
       </div>
       <div className="flex flex-col justify-between p-6 min-h-[180px]">
         <div>
@@ -81,16 +85,20 @@ export default function WorkCard({
               {parseCategoryName(project.category)}
             </span>
             <span className="text-xs text-gray-500 bg-gray-100 px-3 py-1 rounded-full">
-              {project.year}
+              {new Date(project.createdAt).toLocaleDateString('id-ID', {
+                year: 'numeric',
+              })}
             </span>
           </div>
-          <button
-            className="text-orange-500 flex items-center text-sm font-medium group-hover:text-orange-600 transition-colors cursor-pointer"
-            onClick={viewProject}
-          >
-            Lihat
-            <ArrowRight className="ml-1 w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
-          </button>
+          {project.blog && (
+            <button
+              className="text-orange-500 flex items-center text-sm font-medium group-hover:text-orange-600 transition-colors cursor-pointer"
+              onClick={viewProject}
+            >
+              Lihat
+              <ArrowRight className="ml-1 w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
+            </button>
+          )}
         </div>
       </div>
     </div>
