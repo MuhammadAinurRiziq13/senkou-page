@@ -4,8 +4,10 @@ import Image from 'next/image';
 
 export default async function WorkResultDetailPage({
   params,
-}: Readonly<{ params: { id: string } }>) {
-  const { id } = params;
+}: {
+  params: Promise<{ id: string }>;
+}) {
+  const { id } = await params;
 
   const work = await getWorksById(id);
 

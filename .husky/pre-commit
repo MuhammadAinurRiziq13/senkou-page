@@ -5,3 +5,6 @@ pnpm lint || { echo "ESLint check failed!"; exit 1; }
 
 echo "Checking code formatting..."
 pnpm prettier:check || { echo "Prettier check failed!"; exit 1; }
+
+echo "Test build results..."
+pnpm build
