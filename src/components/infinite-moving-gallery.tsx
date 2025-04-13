@@ -1,6 +1,9 @@
-import { useState, useEffect, useRef } from 'react';
+'use client';
 
-function InfiniteMovingGallery() {
+import { useState, useEffect, useRef } from 'react';
+import Image from 'next/image';
+
+export default function InfiniteMovingGallery() {
   const images = [
     {
       src: '/hero-1.svg',
@@ -89,10 +92,12 @@ function InfiniteMovingGallery() {
         key={`${setKey}-${index}`}
         className={`flex-none ${image.className} ${zigzagPosition} transition-all duration-300 hover:scale-105`}
       >
-        <img
+        <Image
           src={image.src}
           alt={image.alt}
           className="w-full h-full object-cover"
+          width={256}
+          height={256}
         />
       </div>
     );
@@ -103,7 +108,7 @@ function InfiniteMovingGallery() {
   const repeatedImages = Array(cloneCount).fill(images).flat();
 
   return (
-    <div className="relative w-full h-[400px] py-8 overflow-x-hidden">
+    <div className="relative w-full max-w-screen h-[400px] py-8 overflow-x-hidden">
       <div ref={containerRef} className="relative w-full h-full">
         <div
           ref={innerRef}
@@ -125,5 +130,3 @@ function InfiniteMovingGallery() {
     </div>
   );
 }
-
-export default InfiniteMovingGallery;
