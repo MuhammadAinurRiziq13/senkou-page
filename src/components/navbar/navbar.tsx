@@ -40,8 +40,8 @@ export default function Navbar() {
 
   return (
     <nav
-      className={`fixed top-0 w-full z-50 max-w-screen transition-all duration-300 ${
-        isScrolled ? 'bg-white/90 backdrop-blur-lg shadow-lg' : 'bg-transparent'
+      className={`fixed top-0 w-full z-50 max-w-screen transition-all duration-300 border-b border-gray-100 ${
+        isScrolled && 'bg-white/90 backdrop-blur-lg'
       }`}
     >
       <div className="max-w-7xl mx-auto flex justify-between items-center py-4 px-4 md:px-8">

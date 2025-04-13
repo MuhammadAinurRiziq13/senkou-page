@@ -1,4 +1,5 @@
 import type { OurWork } from '@senkou/types/work';
+import { QuizAppBlog } from '@senkou/components/blogs/works';
 
 export const WORKS: OurWork[] = [
   {
@@ -7,7 +8,12 @@ export const WORKS: OurWork[] = [
     description: 'Sebuah aplikasi untuk mengerjakan sebuah quiz',
     image: '/services.png',
     category: 'web-app',
-    year: 2023,
+    country: {
+      name: 'Indonesia',
+      code: 'ID',
+    },
+    createdAt: new Date(2025, 0, 1),
+    blog: <QuizAppBlog />,
   },
   {
     id: 'e-commerce-platform',
@@ -15,7 +21,11 @@ export const WORKS: OurWork[] = [
     description: 'Platform belanja online dengan UX terbaik',
     image: '/services.png',
     category: 'web-app',
-    year: 2024,
+    country: {
+      name: 'Indonesia',
+      code: 'ID',
+    },
+    createdAt: new Date(2024, 0, 1),
   },
   {
     id: 'company-profile',
@@ -23,7 +33,11 @@ export const WORKS: OurWork[] = [
     description: 'Website resmi untuk perusahaan teknologi',
     image: '/services.png',
     category: 'web-page',
-    year: 2023,
+    country: {
+      name: 'Indonesia',
+      code: 'ID',
+    },
+    createdAt: new Date(2023, 0, 1),
   },
   {
     id: 'portfolio-website',
@@ -31,7 +45,11 @@ export const WORKS: OurWork[] = [
     description: 'Website portofolio untuk desainer grafis',
     image: '/services.png',
     category: 'web-page',
-    year: 2024,
+    country: {
+      name: 'Indonesia',
+      code: 'ID',
+    },
+    createdAt: new Date(2024, 0, 1),
   },
   {
     id: 'learning-management-system',
@@ -39,7 +57,11 @@ export const WORKS: OurWork[] = [
     description: 'Aplikasi untuk mengelola pembelajaran online',
     image: '/services.png',
     category: 'web-app',
-    year: 2024,
+    country: {
+      name: 'Indonesia',
+      code: 'ID',
+    },
+    createdAt: new Date(2024, 0, 1),
   },
   {
     id: 'restaurant-booking',
@@ -47,6 +69,10 @@ export const WORKS: OurWork[] = [
     description: 'Sistem pemesanan untuk restoran premium',
     image: '/services.png',
     category: 'web-app',
-    year: 2023,
+    country: {
+      name: 'Indonesia',
+      code: 'ID',
+    },
+    createdAt: new Date(2023, 0, 1),
   },
 ];
