@@ -1,6 +1,7 @@
 import { Navbar } from '@senkou/components/navbar';
 import { WorkCard, WorkSlider } from '@senkou/components/works';
 import { WORKS } from '@senkou/constants/works';
+import Footer from '@senkou/sections/footer';
 import { Star } from 'lucide-react';
 
 export default function Works() {
@@ -82,6 +83,8 @@ export default function Works() {
           </div>
         </div>
       </section>
+
+      <Footer />
     </main>
   );
 }

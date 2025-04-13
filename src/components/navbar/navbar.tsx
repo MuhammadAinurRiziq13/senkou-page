@@ -3,11 +3,15 @@
 import { useEffect, useState } from 'react';
 import Image from 'next/image';
 import { Menu, X, ChevronRight, ArrowRight } from 'lucide-react';
+import { useRouter } from 'next/navigation';
+import Link from 'next/link';
 
 export default function Navbar() {
+  const router = useRouter();
+
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [showMenu, setShowMenu] = useState(false); // ⬅️ Kontrol mounting
+  const [showMenu, setShowMenu] = useState(false);
 
   const menuItems = ['Benefits', 'Services', 'Portfolio', 'Pricing', 'FAQ'];
 
@@ -31,12 +35,33 @@ export default function Navbar() {
   }, [mobileMenuOpen]);
 
   const handleMenuItemClick = (item: string) => {
-    setMobileMenuOpen(false);
-    const target = document.getElementById(item.toLowerCase());
-    if (target) {
-      target.scrollIntoView({ behavior: 'smooth' });
+    const targetId = item.toLowerCase();
+
+    if (window.location.pathname !== '/') {
+      sessionStorage.setItem('scrollTarget', targetId);
+      router.push('/');
+    } else {
+      setMobileMenuOpen(false);
+      const target = document.getElementById(targetId);
+      if (target) {
+        target.scrollIntoView({ behavior: 'smooth' });
+      }
     }
   };
+
+  useEffect(() => {
+    const scrollTarget = sessionStorage.getItem('scrollTarget');
+    if (scrollTarget) {
+      sessionStorage.removeItem('scrollTarget');
+
+      setTimeout(() => {
+        const target = document.getElementById(scrollTarget);
+        if (target) {
+          target.scrollIntoView({ behavior: 'smooth' });
+        }
+      }, 100);
+    }
+  }, []);
 
   return (
     <nav
@@ -46,13 +71,13 @@ export default function Navbar() {
     >
       <div className="max-w-7xl mx-auto flex justify-between items-center py-4 px-4 md:px-8">
         {/* Logo + Title */}
-        <div className="flex items-center gap-3">
+        <Link className="flex items-center gap-3" href="/">
           <Image src="/logo.svg" width={40} height={40} alt="logo" />
           <h1 className="text-xl font-bold text-gray-900">
             <span className="bg-clip-text text-orange-600">Senkou</span>{' '}
             <span>Studio</span>
           </h1>
-        </div>
+        </Link>
 
         {/* Desktop Menu */}
         <ul className="hidden md:flex gap-8 text-gray-700 font-medium">
