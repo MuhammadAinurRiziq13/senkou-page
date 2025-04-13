@@ -7,4 +7,5 @@ export interface Service {
   image: React.ImgHTMLAttributes<HTMLImageElement>;
   category: ServiceCategory;
   price?: number;
+  extra?: React.ReactNode | string;
 }
