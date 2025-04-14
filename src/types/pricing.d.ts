@@ -11,4 +11,5 @@ export interface PricingPlan {
   className?: string;
   icon: LucideIcon;
   features: string[];
+  discount?: string | number;
 }

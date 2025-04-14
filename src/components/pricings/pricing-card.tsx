@@ -6,6 +6,7 @@ export default function PricingCard({
   id,
   name,
   description,
+  discount,
   icon: Icon,
   tags,
   period,
@@ -65,7 +66,20 @@ export default function PricingCard({
         <p className="text-sm text-white/90 mb-6 mt-2">{description}</p>
 
         <div className="flex items-baseline mt-4">
-          <span className="text-4xl font-bold">{price}</span>
+          <span className="text-3xl font-bold">
+            {new Intl.NumberFormat('id-ID', {
+              style: 'currency',
+              currency: 'IDR',
+            }).format(Number(price) - Number(discount))}
+          </span>
+          {discount && (
+            <span className="ml-2 text-md font-medium line-through text-gray-400">
+              {new Intl.NumberFormat('id-ID', {
+                style: 'currency',
+                currency: 'IDR',
+              }).format(Number(price))}
+            </span>
+          )}
           <span className="ml-1 text-xl font-medium">{period}</span>
         </div>
         <p className="text-sm text-white/80 mt-1">{priceNote}</p>

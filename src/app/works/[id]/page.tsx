@@ -12,7 +12,7 @@ export default async function WorkResultDetailPage({
   const work = await getWorksById(id);
 
   return (
-    <div className="flex flex-col items-center justify-center min-w-screen min-h-screen pt-10 pb-2 bg-white text-gray-800">
+    <div className="flex flex-col items-center justify-center min-w-screen min-h-screen pt-10 pb-2 p-4 bg-white text-gray-800">
       <Navbar />
 
       <section className="pt-12 w-full max-w-2xl mx-auto overflow-hidden">

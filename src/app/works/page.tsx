@@ -1,6 +1,7 @@
 import { Navbar } from '@senkou/components/navbar';
 import { WorkCard, WorkSlider } from '@senkou/components/works';
 import { WORKS } from '@senkou/constants/works';
+import Footer from '@senkou/sections/footer';
 import { Star } from 'lucide-react';
 
 export default function Works() {
@@ -8,7 +9,7 @@ export default function Works() {
     <main className="min-h-screen bg-white">
       <Navbar />
 
-      <section className="w-full max-w-2xl mx-auto min-h-[70vh] overflow-hidden pt-24 flex flex-col items-center justify-center">
+      <section className="w-full max-w-2xl mx-auto min-h-[70vh] overflow-hidden pt-24 flex flex-col items-center justify-center p-4 md:p-0">
         <h1 className="text-4xl font-medium text-center mb-8 text-gray-800">
           Transformasi Visi Menjadi Karya,
           <br />
@@ -48,7 +49,7 @@ export default function Works() {
         </div>
       </section>
 
-      <section className="w-full overflow-hidden relative bg-gradient-to-b from-white via-orange-50 to-white">
+      <section className="w-full overflow-hidden relative bg-gradient-to-b from-white via-orange-50 to-white p-4 md:p-0">
         <div>
           <WorkSlider />
 
@@ -82,6 +83,8 @@ export default function Works() {
           </div>
         </div>
       </section>
+
+      <Footer />
     </main>
   );
 }
