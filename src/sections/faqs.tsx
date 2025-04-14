@@ -55,7 +55,7 @@ export default function FAQS() {
           </div>
         </div>
 
-        <div className="max-w-3xl mx-auto">
+        <div className="grid grid-cols-2 gap-8 max-w-5xl mx-auto">
           {FAQs.map((faq, index) => (
             <FAQ
               key={index}
