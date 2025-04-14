@@ -17,7 +17,7 @@ import {
   ArrowUpRight,
 } from 'lucide-react';
 
-export default function LandingPageBlog() {
+export default function WebApp() {
   return (
     <div className="flex flex-col items-center justify-center w-full text-gray-900 overflow-hidden bg-gradient-to-b from-white to-orange-50/20">
       {/* Stats Bar with modern 3D cards */}
@@ -65,13 +65,13 @@ export default function LandingPageBlog() {
               <Star className="h-4 w-4 mr-2" /> KENAPA MEMILIH KAMI
             </span>
             <h2 className="text-4xl font-bold text-gray-900 mt-6 mb-6">
-              Mengapa Website Profesional Penting?
+              Mengapa Web App Profesional Penting?
             </h2>
             <div className="h-1.5 w-32 bg-gradient-to-r from-orange-400 to-amber-400 mx-auto rounded-full"></div>
             <p className="text-gray-700 mt-6 max-w-xl mx-auto text-lg">
-              Website profesional bukan hanya sekadar kehadiran online, tetapi
-              investasi yang menghasilkan kepercayaan dan pertumbuhan bisnis
-              Anda.
+              Web App profesional membantu bisnis Anda beroperasi lebih efisien,
+              menjangkau lebih banyak pelanggan, dan memberikan pengalaman
+              pengguna yang unggul.
             </p>
           </div>
 
@@ -79,23 +79,23 @@ export default function LandingPageBlog() {
             {[
               {
                 icon: <Zap className="h-10 w-10 text-orange-500" />,
-                title: 'Kesan Pertama yang Memikat',
-                desc: 'Buat pengunjung terkesan dari awal dan tingkatkan kredibilitas bisnis Anda dengan desain yang profesional dan modern.',
+                title: 'Fungsionalitas Lengkap',
+                desc: 'Dapatkan semua fitur yang dibutuhkan bisnis Anda mulai dari manajemen konten, transaksi, hingga analitik pengguna.',
               },
               {
                 icon: <Smartphone className="h-10 w-10 text-orange-500" />,
-                title: 'Responsif di Semua Perangkat',
-                desc: 'Tampilan optimal di semua ukuran layar untuk pengalaman pengguna terbaik, dari desktop hingga smartphone.',
+                title: 'Akses Multi-Platform',
+                desc: 'Aplikasi web yang responsif dan dapat diakses dari berbagai perangkat termasuk desktop, tablet, dan smartphone.',
               },
               {
                 icon: <Search className="h-10 w-10 text-orange-500" />,
-                title: 'Siap Bersaing di SEO',
-                desc: 'Dioptimalkan untuk mesin pencari agar pelanggan mudah menemukan bisnis Anda secara online dengan peringkat yang lebih baik.',
+                title: 'Skalabilitas Tinggi',
+                desc: 'Arsitektur yang dirancang untuk tumbuh bersama bisnis Anda, siap menangani peningkatan pengguna dan fitur.',
               },
               {
                 icon: <Shield className="h-10 w-10 text-orange-500" />,
-                title: 'Dirancang untuk Konversi',
-                desc: 'Desain strategis yang fokus pada tujuan bisnis dan meningkatkan tingkat konversi pengunjung menjadi pelanggan.',
+                title: 'Keamanan Terjamin',
+                desc: 'Proteksi data sensitif dengan sistem keamanan berlapis dan pembaruan rutin untuk mencegah ancaman siber.',
               },
             ].map((benefit, index) => (
               <div
@@ -131,12 +131,12 @@ export default function LandingPageBlog() {
               <Layout className="h-4 w-4 mr-2" /> FITUR UNGGULAN
             </span>
             <h2 className="text-4xl font-bold text-gray-900 mt-6 mb-6">
-              Yang Kami Tawarkan Untuk Anda
+              Solusi Web App yang Kami Tawarkan
             </h2>
             <div className="h-1.5 w-32 bg-gradient-to-r from-orange-400 to-amber-400 mx-auto rounded-full"></div>
             <p className="text-gray-700 mt-6 max-w-xl mx-auto text-lg">
-              Kami menyediakan berbagai fitur canggih untuk memastikan website
-              Anda tidak hanya menarik, tetapi juga fungsional dan efektif.
+              Kami mengembangkan berbagai jenis aplikasi web dengan teknologi
+              terkini untuk kebutuhan bisnis Anda.
             </p>
           </div>
 
@@ -149,33 +149,33 @@ export default function LandingPageBlog() {
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 {[
                   {
-                    title: 'Desain Modern & Menarik',
-                    desc: 'Tampilan website yang eye-catching dan sesuai dengan identitas brand Anda',
-                    icon: <Star className="h-6 w-6 text-orange-500" />,
-                  },
-                  {
-                    title: 'Kecepatan Loading Optimal',
-                    desc: 'Website yang cepat untuk pengalaman pengguna terbaik & SEO yang lebih baik',
-                    icon: <Zap className="h-6 w-6 text-orange-500" />,
-                  },
-                  {
-                    title: 'Integrasi Media Sosial',
-                    desc: 'Terhubung dengan platform sosial media untuk meningkatkan jangkauan',
-                    icon: <Users className="h-6 w-6 text-orange-500" />,
-                  },
-                  {
-                    title: 'Formulir Kontak Interaktif',
-                    desc: 'Formulir yang mudah digunakan untuk memudahkan komunikasi dengan pelanggan',
-                    icon: <Box className="h-6 w-6 text-orange-500" />,
-                  },
-                  {
-                    title: 'Sistem Analitik Lengkap',
-                    desc: 'Pantau dan analisa performa website untuk pengambilan keputusan',
+                    title: 'E-Commerce',
+                    desc: 'Platform jual beli online dengan sistem pembayaran, keranjang belanja, dan manajemen produk',
                     icon: <TrendingUp className="h-6 w-6 text-orange-500" />,
                   },
                   {
-                    title: 'Kode Bersih & Teroptimasi',
-                    desc: 'Struktur kode yang rapi untuk performa dan pemeliharaan jangka panjang',
+                    title: 'Portal Berita',
+                    desc: 'Sistem manajemen konten untuk publikasi artikel dengan kategori dan pencarian',
+                    icon: <Search className="h-6 w-6 text-orange-500" />,
+                  },
+                  {
+                    title: 'E-Learning',
+                    desc: 'Platform pembelajaran online dengan manajemen kursus, materi, dan ujian',
+                    icon: <Users className="h-6 w-6 text-orange-500" />,
+                  },
+                  {
+                    title: 'Manajemen Data',
+                    desc: 'Aplikasi untuk mengelola data bisnis dengan dashboard analitik dan laporan',
+                    icon: <Box className="h-6 w-6 text-orange-500" />,
+                  },
+                  {
+                    title: 'Sistem Reservasi',
+                    desc: 'Platform booking online dengan kalender, notifikasi, dan pembayaran',
+                    icon: <Clock className="h-6 w-6 text-orange-500" />,
+                  },
+                  {
+                    title: 'Custom Web App',
+                    desc: 'Solusi khusus yang dirancang sesuai kebutuhan unik bisnis Anda',
                     icon: <Code className="h-6 w-6 text-orange-500" />,
                   },
                 ].map((feature, index) => (
@@ -207,9 +207,9 @@ export default function LandingPageBlog() {
                   </p>
                 </div>
                 <p className="text-gray-700 italic border-l-4 border-orange-500 pl-6 py-3 text-lg">
-                  &quot;Kami memahami bahwa setiap bisnis memiliki kebutuhan
-                  yang unik. Oleh karena itu, kami menawarkan solusi yang dapat
-                  disesuaikan dengan kebutuhan spesifik Anda.&quot;
+                  &quot;Kami tidak hanya membangun aplikasi web, tetapi solusi
+                  bisnis digital yang membantu Anda mencapai tujuan dengan
+                  teknologi tepat guna.&quot;
                 </p>
               </div>
             </div>
@@ -220,26 +220,25 @@ export default function LandingPageBlog() {
         <div className="mb-20">
           <div className="relative">
             {/* Multiple background layers for depth */}
-            <div className="absolute inset-0 bg-gradient-to-r from-orange-500 to-amber-500 rounded-3xl transform rotate-2 scale-105 opacity-20 blur-xl"></div>
-            <div className="absolute inset-0 bg-gradient-to-r from-orange-500 to-amber-500 rounded-3xl transform -rotate-1 scale-103"></div>
+            <div className="absolute inset-0 bg-amber-500 rounded-3xl transform -rotate-1 scale-103"></div>
 
             <div className="relative bg-gradient-to-br from-orange-500 to-orange-600 text-white p-12 md:p-16 rounded-3xl shadow-lg overflow-hidden">
               <div className="relative z-10 max-w-3xl mx-auto text-center">
                 <span className="inline-flex items-center py-1.5 px-4 bg-white/20 backdrop-blur-sm text-white font-semibold rounded-full text-sm mb-6">
                   <Award className="h-4 w-4 mr-2" />
-                  Tingkatkan Bisnis Anda Sekarang
+                  Transformasi Digital Bisnis Anda
                 </span>
                 <h2 className="text-3xl md:text-5xl font-bold mb-8 leading-tight">
-                  Siap Membawa Bisnis Anda ke Level Berikutnya?
+                  Siap Mengembangkan Web App untuk Bisnis Anda?
                 </h2>
                 <p className="mb-10 opacity-95 text-xl font-medium">
-                  Jangan biarkan website Anda menjadi penghalang. Dengan
-                  pengalaman bertahun-tahun di industri ini, kami telah membantu
-                  banyak bisnis mencapai tujuan mereka.
+                  Dari e-commerce hingga sistem custom, kami siap membantu Anda
+                  membangun aplikasi web yang powerful dan scalable untuk
+                  mendukung pertumbuhan bisnis.
                 </p>
                 <div className="flex flex-wrap gap-6 justify-center">
                   <Link
-                    href={`https://wa.me/6281325205723?text=Halo%20Senkou%2C%20saya%20tertarik%20dengan%20layanan%20yang%20anda%20tawarkan`}
+                    href={`https://wa.me/6281325205723?text=Halo%20Senkou%2C%20saya%20tertarik%20dengan%20layanan%20pembuatan%20Web%20App`}
                     className="group relative bg-white hover:bg-orange-50 text-orange-600 px-8 py-4 rounded-xl font-bold shadow-lg hover:shadow-xl flex items-center justify-center gap-2 transition-all duration-300 overflow-hidden"
                   >
                     <span className="relative z-10 flex items-center">
@@ -252,17 +251,19 @@ export default function LandingPageBlog() {
 
                 {/* Trust badges with improved visibility */}
                 <div className="flex flex-wrap justify-center gap-6 mt-10">
-                  {['Tanpa Kewajiban', 'Respon Cepat', 'Solusi Terbaik'].map(
-                    (item, index) => (
-                      <span
-                        key={index}
-                        className="flex items-center text-base bg-white/10 py-2 px-4 rounded-full hover:bg-white/20 transition-colors"
-                      >
-                        <CheckCircle className="h-4 w-4 mr-2 text-amber-200" />
-                        {item}
-                      </span>
-                    )
-                  )}
+                  {[
+                    'Dokumentasi Lengkap',
+                    'Tim Berpengalaman',
+                    'Pemeliharaan Jangka Panjang',
+                  ].map((item, index) => (
+                    <span
+                      key={index}
+                      className="flex items-center text-base bg-white/10 py-2 px-4 rounded-full hover:bg-white/20 transition-colors"
+                    >
+                      <CheckCircle className="h-4 w-4 mr-2 text-amber-200" />
+                      {item}
+                    </span>
+                  ))}
                 </div>
               </div>
             </div>

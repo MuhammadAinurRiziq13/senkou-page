@@ -12,11 +12,12 @@ export default async function DetailServicePage({
   const service = await getServicesById(id);
 
   return (
-    <div className="flex flex-col items-center justify-center min-w-screen min-h-screen pt-10 pb-2 p-4 bg-white text-gray-800">
+    <div className="flex flex-col items-center justify-center overflow-hidden min-w-screen min-h-screen pt-10 pb-2 p-4 bg-white text-gray-800">
       <Navbar />
-      <section className="py-12 w-full max-w-2xl mx-auto overflow-hidden">
+      <section className="py-12 w-full mx-auto overflow-hidden">
         {service?.image && (
-          <div className="flex flex-col mt-4">
+          // kenapa widthnya tetap tidak full?
+          <div className="max-w-6xl flex flex-col mt-4 mx-auto">
             <div className="mt-3 text-center mb-8">
               <span className="inline-block py-1 px-3 bg-orange-100 text-orange-600 font-semibold rounded-full text-sm mb-6">
                 Service

@@ -1,4 +1,4 @@
-import { LandingPageBlog } from '@senkou/components/blogs/services';
+import { LandingPageBlog, WebApp } from '@senkou/components/blogs/services';
 import type { Service } from '@senkou/types/service';
 
 export const SERVICES: Service[] = [
@@ -29,5 +29,6 @@ export const SERVICES: Service[] = [
       height: 600,
     },
     category: 'web-app',
+    extra: <WebApp />,
   },
 ];
