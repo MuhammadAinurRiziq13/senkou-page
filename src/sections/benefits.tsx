@@ -6,29 +6,29 @@ import { ChevronRight } from 'lucide-react';
 export default function Benefits() {
   return (
     <section
-      className="w-full py-32 overflow-hidden relative bg-gradient-to-b from-white to-orange-50"
+      className="relative w-full py-32 overflow-hidden bg-gradient-to-b from-white to-orange-50"
       id="benefits"
     >
       {/* Main content container */}
-      <div className="max-w-6xl mx-auto px-6 relative z-10">
+      <div className="relative z-10 max-w-6xl px-6 mx-auto">
         {/* Header with enhanced typography */}
         <div className="mb-24">
-          <span className="inline-block py-1 px-3 bg-orange-100 text-orange-600 font-semibold rounded-full text-sm mb-6">
+          <span className="inline-block px-3 py-1 mb-6 text-sm font-semibold text-orange-600 bg-orange-100 rounded-full">
             Benefits
           </span>
 
-          <div className="flex flex-col md:flex-row gap-12 items-start">
+          <div className="flex flex-col items-start gap-12 md:flex-row">
             <div className="md:w-1/2">
-              <h2 className="text-5xl md:text-6xl font-bold leading-tight mb-6">
+              <h2 className="mb-6 text-5xl font-bold leading-tight md:text-6xl">
                 Mengapa pilih
                 <span className="relative inline-block">
-                  {/* <span className="absolute inset-x-0 bottom-2 h-3 bg-orange-200 -z-10 transform -rotate-1"></span> */}
+                  {/* <span className="absolute inset-x-0 h-3 transform bg-orange-200 bottom-2 -z-10 -rotate-1"></span> */}
                   Jasa Pembuatan Website
                 </span>
                 di
-                <span className="relative ml-2 text-orange-600">
+                <span className="relative px-2 mx-3 text-white">
                   Senkou Studio
-                  <span className="absolute -bottom-1 left-0 w-full h-1 bg-orange-400"></span>
+                  <span className="absolute left-0 w-full bg-[#ff7513] h-18 -bottom-1 z-[-1] -rotate-2"></span>
                 </span>
               </h2>
             </div>
@@ -42,12 +42,12 @@ export default function Benefits() {
                 sempurna.
               </p>
               <div
-                className="mt-6 inline-flex items-center group cursor-pointer"
+                className="inline-flex items-center mt-6 cursor-pointer group"
                 onClick={() => {
                   window.open('https://wa.me/+6281325205723', '_blank');
                 }}
               >
-                <span className="text-orange-600 font-medium mr-2">
+                <span className="mr-2 font-medium text-orange-600">
                   Konsultasi gratis
                 </span>
                 <ChevronRight
@@ -60,7 +60,7 @@ export default function Benefits() {
         </div>
 
         {/* Benefits Grid with improved cards */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
           {BENEFITS.map((benefit, index) => (
             <div
               key={index}
@@ -73,10 +73,10 @@ export default function Benefits() {
                   className="group-hover:scale-[1.2] transition-all duration-700"
                 />
               </div>
-              <h3 className="font-bold text-xl mb-4 flex items-center">
+              <h3 className="flex items-center mb-4 text-xl font-bold">
                 <span>{benefit.title}</span>
               </h3>
-              <p className="text-gray-600 leading-relaxed">
+              <p className="leading-relaxed text-gray-600">
                 {benefit.description}
               </p>
             </div>
@@ -87,7 +87,7 @@ export default function Benefits() {
         <div className="absolute top-1/2 right-0 transform -translate-y-1/2 hidden lg:block z-[-1]">
           <div className="grid grid-cols-3 gap-2">
             {[...Array(15)].map((_, i) => (
-              <div key={i} className="w-2 h-2 rounded-full bg-orange-200"></div>
+              <div key={i} className="w-2 h-2 bg-orange-200 rounded-full"></div>
             ))}
           </div>
         </div>
